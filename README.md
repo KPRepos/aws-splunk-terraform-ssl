@@ -1,14 +1,9 @@
-### Install and configure Demo/Lab Splunk with SSL certs for quick testing using LetsEncrypt, this also applied for HEC certs
+### Install and configure Demo/Lab Splunk with SSL certs for quick testing using LetsEncrypt, this also applies SSL for HEC 
 
-#### This is a combination of changes that worked for version 9.x of splunk
+This is a combination of changes that worked for version 9.x of splunk, Terraform will install SPlunk and enables AWS SSM to login. Once installed, Create a DNS Record for Splunk with public IP attached as EIP to Splunk.
 
-#### Terraform will install SPlunk and enables AWS SSM to login
+Login to splunk using aws Session Manger and follow Post Install scripts below. Lets encrypt require port 80 for Auto domain validation  and 8088 and 8443 are made Public, and can be removed from Security Groups
 
-#### Once installed, Create a DNS Record for Splunk with public IP attached as EIP to Splunk.
-
-#### Login to splunk uwing aws Session Manger
-
-#### Post Install script
 
 ```
 sudo letsencrypt certonly --standalone -d splunk-1.lab.kprepos.com --register-unsafely-without-email --agree-tos
@@ -63,7 +58,7 @@ crossOriginSharingPolicy = \*
 
 ```
 
-#### Add/update below content to /opt/splunk/etc/system/local/server.conf, There will be additional aurogenerated content which we can keep as is and just add below lines.
+#### Add/update below content to /opt/splunk/etc/system/local/server.conf, There will be additional auto generated content which we can keep as is and just add below lines.
 
 ```
 [general]
