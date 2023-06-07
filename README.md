@@ -2,6 +2,13 @@
 
 This is a combination of changes that worked for version 9.x of splunk, Terraform will install SPlunk and enables AWS SSM to login. Once installed, Create a DNS Record for Splunk with public IP attached as EIP to Splunk.
 
+### Install using terraform 
+
+Change lab-variables.auto.tfvars as required  and run `terraform init && terraform apply`
+
+The very first time this runs, the SPLUNk marketplace subscription need to be accepted, This is using BYOL so no software charges, but please validate before subscribing or hardcode a known AMI-ID
+
+
 Login to splunk using aws Session Manger and follow Post Install scripts below. Lets encrypt require port 80 for Auto domain validation  and 8088 and 8443 are made Public, and can be removed from Security Groups
 
 
